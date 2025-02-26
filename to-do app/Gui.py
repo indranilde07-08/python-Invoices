@@ -27,12 +27,13 @@ while True:
             todos_edit= values["items"][0]
             new_todo = values["todos"]
             todos = function.get_todos()
-            index = todos.index(todos_edit)
-            todos[index] = new_todo
+            index = todos.index(todos_edit.strip() + '\n')
+            todos[index] = new_todo + '\n'
             function.write_todos(todos)
             window["items"].update(values=todos)
-        case 'todos':
-            window['todo'].update(value=values['items'][0])
+
+        case 'items':
+            window['todos'].update(value=values['items'][0])
 
         case sg.WIN_CLOSED:
             break
