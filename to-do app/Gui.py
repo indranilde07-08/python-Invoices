@@ -7,9 +7,13 @@ add_button = sg.Button("Add")
 list_box = sg.Listbox(values=function.get_todos(), key='items',
                       enable_events=True, size=[45, 10])
 edit_button = sg.Button("Edit")
+delete_button = sg.Button("Delete")
+exit_button = sg.Button("Exit")
+
+layout = [[label], [input_box, add_button], [list_box, edit_button, delete_button],[exit_button]]
 
 window = sg.Window('My To-Do App',
-                   layout=[[label], [input_box, add_button], [list_box, edit_button]],
+                   layout= layout,
                    font=('Helvetica', 20))  # []any obiject puting in one row putiing
 while True:
     event, values = window.read()  # this read all thing
@@ -31,6 +35,16 @@ while True:
             todos[index] = new_todo + '\n'
             function.write_todos(todos)
             window["items"].update(values=todos)
+
+        case 'Delete':
+            todo_to_delete = values['items'][0]
+            todos = function.get_todos()
+            todos.remove(todo_to_delete)
+            function.write_todos(todos)
+            window['items'].update(values=todos)
+
+        case 'Exit':
+            break
 
         case 'items':
             window['todos'].update(value=values['items'][0])
