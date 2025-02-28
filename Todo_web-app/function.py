@@ -1,4 +1,11 @@
-def get_todos(filepath="todos.txt"):
+import os
+
+filepath ="todos.txt"
+
+def get_todos(filepath):
+    if not os.path.exists(filepath):
+        with open(filepath, 'w') as file:  # Create an empty file
+            pass
     with open(filepath, 'r') as file_name:
         """ Read a text file and return the list of to-do items. """
         todos_local = file_name.readlines()
