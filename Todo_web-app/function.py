@@ -2,7 +2,7 @@ import os
 
 filepath ="todos.txt"
 
-def get_todos(filepath):
+def get_todos(filepath="todos.txt"):
     if not os.path.exists(filepath):
         with open(filepath, 'w') as file:  # Create an empty file
             pass
