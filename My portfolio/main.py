@@ -1,5 +1,5 @@
 import streamlit as st
-
+import pandas as pd
 st.set_page_config( )
 col1 , col2 = st.columns(2)
 
@@ -21,3 +21,15 @@ content2 = """
           Feel free contact me!
            """
 st.subheader(content2)
+
+col3,col4 = st.columns(2)
+
+df = pd.read_csv("data.csv",sep=";")
+with col3:
+    for index,item in df[:10].iterrows(): #Iterates over DataFrame rows
+        st.header(item["title"])#Gets the title for that row
+
+
+with col4:
+    for index,item in df[10:].iterrows():
+        st.header(item["title"])
