@@ -1,9 +1,11 @@
 import streamlit as st
 import pandas as pd
-col1 , col2 = st.columns(2)
+
+with st.container():
+    col1, col2 = st.columns([1, 2])  # Adjust column width
 
 with col1:
-    st.image("images/481217973_1842540879848818_8357691637776820431_n.png", width= 500)
+    st.image("images/481217973_1842540879848818_8357691637776820431_n.png", width= 230)
 
 with col2:
     st.title("Indranil de")
